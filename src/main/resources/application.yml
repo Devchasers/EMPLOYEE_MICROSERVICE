@@ -1,0 +1,39 @@
+server:
+  port: 8082
+  forward-headers-strategy: framework
+spring:
+  application:
+    name: employees
+  data:
+    mongodb:
+      uri : mongodb+srv://faten:1234@cluster0.bqxcswf.mongodb.net/?retryWrites=true&w=majority
+      database: employeedb
+      auto-index-creation: true
+  main:
+    allow-circular-references: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    #    defaultZone: http://172.17.0.2:8761/eureka/
+
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+
+
+
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+management:
+  info:
+    env:
+      enabled: true
+
+springdoc:
+  api-docs:
+    path: /docs
